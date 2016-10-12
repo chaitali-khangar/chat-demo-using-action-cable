@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
     user = User.find_by(user_params)
     if user
       session[:user_id] = user.id
-      redirect_to chatrooms_path
+      redirect_to chatroom_path(user.chatroom.id)
     else
       redirect_to login_path, flash[:notice] =  {username: ["doesn't exist"]}
     end
